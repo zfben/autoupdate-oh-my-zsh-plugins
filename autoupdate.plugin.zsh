@@ -8,10 +8,12 @@ fi
 if [[ $- == *i* ]] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
   RED="$(tput setaf 1)"
   BLUE="$(tput setaf 4)"
+  GREEN="$(tput setaf 2)"
   NORMAL="$(tput sgr0)"
 else
   BLUE=""
   BOLD=""
+  GREEN=""
   NORMAL=""
 fi
 
@@ -55,7 +57,7 @@ function _upgrade_custom_plugin() {
     curr_head=$( git -C "${p}" rev-parse HEAD )
     if [ "${last_head}" != "${curr_head}" ]
     then
-      printf "${BLUE}%s${NORMAL}\n" "Hooray! the $pn $pt has been updated."
+      printf "${GREEN}%s${NORMAL}\n" "Hooray! the $pn $pt has been updated."
     else
       printf "${BLUE}%s${NORMAL}\n" "The $pn $pt was already at the latest version."
     fi
